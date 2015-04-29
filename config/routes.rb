@@ -1,7 +1,10 @@
 Rails.application.routes.draw do
+  devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
+  # Set the index action of a PagesController as the root route
+  root 'pages#index'
   # You can have the root of your site routed with "root"
   # root 'welcome#index'
 
