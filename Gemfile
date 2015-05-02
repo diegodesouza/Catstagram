@@ -26,5 +26,6 @@ group :development, :test do
   gem 'quiet_assets'
   gem 'simple_form'
   gem 'carrierwave'
+  gem 'orderly'
 end
 
