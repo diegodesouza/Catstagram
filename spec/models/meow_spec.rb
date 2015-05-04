@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Meow do
-  before :each do FactoryGirl.create(:meow) end
+  before { FactoryGirl.create(:meow) }
 
   it { should belong_to :user }
   it { should belong_to :post }
@@ -13,5 +13,4 @@ describe Meow do
   it { should_not have_valid(:post).when(nil) }
 
   it { should validate_uniqueness_of(:post_id).scoped_to(:user_id) }
-  it { should have_many(:meows).dependent(:destroy) }
 end
