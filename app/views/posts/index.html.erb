@@ -1,21 +1,21 @@
 <h1>Meow</h1>
 
+<%= link_to "Add a Post", new_post_path %>
+
 <% @posts.each do |post| %>
-  <!-- A wrapper element for each Post that also has the value of the Post's id -->
   <div data-post-id="<%= post.id %>">
-    <%= image_tag post.image.url %>
+    <%= image_tag post.image.url, height: 150 %>
 
     <p><%= pluralize post.meows.count, "Meow" %></p>
 
     <% if user_signed_in? %>
       <% if post.has_meow_from?(current_user) %>
         <%= button_to "Remove Meow", post_meow_path(post, post.meow_from(current_user)),
-          method: :delete,
-          form: { data: { 'meow-button' => 'delete' } } %>
+            method: :delete,
+            form: { data: { 'meow-button' => 'delete' } } %>
       <% else %>
-        <%= button_to "Meow", post_meows_path(post),
-          method: :post,
-          form: { data: { 'meow-button' => 'create' } } %>
+        <%= button_to "Meow", post_meows_path(post), method: :post,
+            form: { data: { 'meow-button' => 'create' } } %>
       <% end %>
     <% end %>
 
