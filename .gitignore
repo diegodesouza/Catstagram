@@ -13,7 +13,8 @@
 /tmp
 /public/assets*
 /public/uploads
-
+../fixtures/*
+./db/fixtures
 # Compiled source #
 ###################
 *.com

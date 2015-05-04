@@ -1,7 +1,10 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
-#
-# Examples:
-#
-#   cities = City.create([{ name: 'Chicago' }, { name: 'Copenhagen' }])
-#   Mayor.create(name: 'Emanuel', city: cities.first)
+user = User.where(email: 'seed@example.com').first_or_initialize.tap do |u|
+ u.password = 'castagenius'
+end
+
+Dir.foreach('db/fixtures/') do |file|
+  if file.include?('.png')
+    image = File.open(File.join(Rails.root, "/db/fixtures/#{file}"))
+    Post.create(user: user, image: image)
+  end
+end
