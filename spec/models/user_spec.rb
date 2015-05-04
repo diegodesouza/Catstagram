@@ -19,4 +19,8 @@ describe User do
     it { should_not have_valid(:email).when("wasd", "kitty.com", "ki@", nil, "") }
     it { should validate_uniqueness_of(:email) }
   end
+
+  describe "meow" do
+    it { should have_many(:meows).dependent(:destroy) }
+  end
 end

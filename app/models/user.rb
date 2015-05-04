@@ -8,4 +8,7 @@ class User < ActiveRecord::Base
     dependent: :destroy,
     inverse_of: :user
 
+  has_many :meows,
+    dependent: :destroy,
+    inverse_of: :user
 end
